@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suyash Zalte | Portfolio</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a2e0adbdc0.js" crossorigin="anonymous"></script>
+
+  <style>
+    /* ========== BASE STYLES ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(-45deg, #0f172a, #1e3a8a, #06b6d4, #14b8a6);
+      background-size: 400% 400%;
+      animation: gradientMove 10s ease infinite;
+      color: #f8fafc;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ========== HEADER ========== */
+    header {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+      color: #fff;
+      text-shadow: 0 0 10px #38bdf8, 0 0 20px #0ea5e9, 0 0 40px #06b6d4;
+      animation: glowPulse 2.5s infinite alternate;
+    }
+
+    @keyframes glowPulse {
+      from {
+        text-shadow: 0 0 10px #38bdf8, 0 0 20px #0ea5e9;
+      }
+      to {
+        text-shadow: 0 0 25px #38bdf8, 0 0 50px #06b6d4;
+      }
+    }
+
+    header p {
+      color: #cbd5e1;
+      font-size: 1.1em;
+      min-height: 28px;
+    }
+
+    /* Typewriter Effect */
+    .typewriter {
+      border-right: 2px solid #38bdf8;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 4s steps(40, end) infinite alternate, blink 0.7s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .resume-btn {
+      margin-top: 20px;
+      display: inline-block;
+      background: #38bdf8;
+      color: #0f172a;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .resume-btn:hover {
+      background: #0ea5e9;
+      color: #fff;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #38bdf8;
+    }
+
+    .resume-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0)
+      );
+      transform: skewX(-20deg);
+    }
+
+    .resume-btn:hover::before {
+      animation: shimmer 0.8s forwards;
+    }
+
+    @keyframes shimmer {
+      100% {
+        left: 125%;
+      }
+    }
+
+    /* ========== SECTION STYLES ========== */
+    section {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 25px;
+      margin-top: 25px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      transition: 0.3s ease;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+    }
+
+    section h2 {
+      color: #38bdf8;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    section p, li {
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 10px;
+    }
+
+    li::before {
+      content: "⚡";
+      margin-right: 10px;
+      color: #38bdf8;
+    }
+
+    strong {
+      color: #93c5fd;
+    }
+
+    /* ========== PROJECTS ========== */
+    #projects li {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #projects li:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    /* ========== HOBBIES ========== */
+    .hobbies-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-around;
+      margin-top: 15px;
+    }
+
+    .hobby-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      width: 280px;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.1);
+      animation: floatCard 6s ease-in-out infinite;
+    }
+
+    @keyframes floatCard {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .hobby-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
+    }
+
+    .hobby-card i {
+      font-size: 2em;
+      color: #38bdf8;
+      margin-bottom: 10px;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      text-align: center;
+      color: #94a3b8;
+      margin: 40px 0 10px;
+      font-size: 0.9em;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+      section {
+        padding: 20px;
+      }
+      .hobby-card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- ===== HEADER ===== -->
+    <header>
+      <h1>Suyash Zalte</h1>
+      <p class="typewriter">💻 IT Graduate | Java & Python Developer | Tech Enthusiast</p>
+      <a href="resume.pdf" class="resume-btn" download><i class="fas fa-file-download"></i> Download Resume</a>
+    </header>
+
+    <!-- ===== OBJECTIVE ===== -->
+    <section id="objective">
+      <h2><i class="fas fa-bullseye"></i> Objective</h2>
+      <p>
+        Motivated IT graduate with a strong foundation in computer science and hands-on experience in software development through academic projects, freelancing, and internships. Eager to contribute innovative solutions and grow in a dynamic tech environment.
+      </p>
+    </section>
+
+    <!-- ===== EDUCATION ===== -->
+    <section id="education">
+      <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+      <p><strong>Sandip Foundation Institute of Technology and Research Centre</strong> — Nashik</p>
+      <p>Bachelor of Engineering in Information Technology (CGPA: 7.5) | <em>2019 - 2024</em></p>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills">
+      <h2><i class="fas fa-code"></i> Skills</h2>
+      <ul>
+        <li><strong>Languages:</strong> Python, Java, C++, C</li>
+        <li><strong>Frameworks:</strong> Django, Spring Boot</li>
+        <li><strong>Databases:</strong> PostgreSQL, SQL</li>
+        <li><strong>DevOps Tools:</strong> Docker, Git, GitHub, Jenkins</li>
+        <li><strong>Core:</strong> Problem Solving</li>
+        <li><strong>Soft Skills:</strong> Communication, Continuous Learning</li>
+      </ul>
+    </section>
+
+    <!-- ===== CERTIFICATES ===== -->
+    <section id="certificates">
+      <h2><i class="fas fa-certificate"></i> Certificates</h2>
+      <ul>
+        <li>Introduction to Python – Infosys</li>
+        <li>Programming in Python – Coursera (Meta)</li>
+        <li>The Java Language – Coursera</li>
+        <li>Software Engineering Job Simulation – J.P. Morgan</li>
+        <li>Software Engineering Job Simulation Trainee – Telstra</li>
+      </ul>
+    </section>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section id="experience">
+      <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+      <p><strong>SK Bits Software Solutions Pvt. Ltd.</strong> | <em>Mar 2025 – Aug 2025</em></p>
+      <ul>
+        <li>Developed Authentication REST APIs using JWT tokens.</li>
+        <li>Worked with GitHub, Jenkins, and CI/CD pipelines.</li>
+        <li>Automated manual tasks with Python scripts.</li>
+        <li>Implemented microservices-based architecture.</li>
+        <li>Managed Python environment upgrades across projects.</li>
+      </ul>
+    </section>
+
+    <section id="experience2">
+      <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+      <p><strong>Bentork Industries LLP.</strong> | <em>Dec 2024 – Jan 2025</em></p>
+      <ul>
+        <li>Upgraded and maintained Python environments across multiple projects.</li>
+        <li>Debugged Java projects using SQL databases.</li>
+        <li>Created API documentation for developers.</li>
+      </ul>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects">
+      <h2><i class="fas fa-rocket"></i> Projects</h2>
+      <ul>
+        <li>
+          <strong>CRM Application:</strong> A system enabling efficient customer data management and lead tracking, and streamlined workflows. <br>
+          <strong>Tech Stack:</strong> MySQL, OOP Concepts
+        </li>
+
+        <li>
+          <strong>Task Manager:</strong> Smart task management platform using microservices. <br>
+          <strong>Tech Stack:</strong> FastAPI, Django ORM, PostgreSQL, Redis, Celery, RabbitMQ, Docker, OOP Concepts
+        </li>
+
+        <li>
+          <strong>Smart ATM Security System:</strong> A solution for ATMs in remote areas which prevents masked intruders from accessing ATM machines. <br>
+          <strong>Tech Stack:</strong> Python, OpenCV, TensorFlow, NumPy
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== HOBBIES ===== -->
+    <section id="hobbies">
+      <h2><i class="fas fa-heart"></i> Hobbies</h2>
+      <div class="hobbies-list">
+        <div class="hobby-card">
+          <i class="fas fa-utensils"></i>
+          <h3>Cooking</h3>
+          <p>I enjoy experimenting with new recipes.</p>
+        </div>
+
+        <div class="hobby-card">
+          <i class="fas fa-hiking"></i>
+          <h3>Trekking</h3>
+          <p>I love going on treks with friends and exploring nature.</p>
+        </div>
+
+        <div class="hobby-card">
+          <i class="fas fa-gamepad"></i>
+          <h3>Gaming</h3>
+          <p>I'm passionate about PC gaming and strategy games.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact">
+      <h2><i class="fas fa-envelope"></i> Contact</h2>
+      <p>Email: <a href="mailto:suyashzalte999@gmail.com">suyashzalte999@gmail.com</a></p>
+      <p>GitHub: <a href="https://github.com/suyashzalte" target="_blank">https://github.com/suyashzalte</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/suyash-zalte" target="_blank">https://www.linkedin.com/in/suyash-zalte/</a></p>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+      © <span id="year"></span> Suyash Zalte • Built with ❤️ using HTML + CSS
+    </footer>
+  </div>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // Automatically update the footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Scroll-triggered fade-in animation
+    const sections = document.querySelectorAll("section");
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach((section) => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < triggerBottom) {
+          section.classList.add("visible");
+        }
+      });
+    };
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+  </script>
+</body>
+</html>
